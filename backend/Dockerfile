@@ -9,7 +9,7 @@ RUN pip install -r requirements.txt
 
 
 COPY /server/recommendations.py /usr/app/src/server/recommendations.py
-COPY /server/models.py /usr/app/src/server/models.py
+COPY /server/repository.py /usr/app/src/server/repository.py
 COPY /server/api_routes.py /usr/app/src/server/api_routes.py
 COPY /server/__init__.py /usr/app/src/server/__init__.py
 COPY run_server.py ./

@@ -2,7 +2,7 @@ from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 import numpy as np
-from server.models import get_all_games, get_embed_data, get_pca_data
+from server.repository import get_all_games, get_embed_data, get_pca_data
 
 
 df = get_all_games()

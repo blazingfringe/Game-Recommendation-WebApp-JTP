@@ -1,9 +1,9 @@
 from server import app
 from flask import jsonify, request
 from flask_cors import cross_origin
-from server.models import get_game_list, getEachRecommendation, ready_response
+from server.repository import get_game_list, getEachRecommendation, ready_response
 from server.recommendations import give_recommendations
-from server.models import connection
+from server.repository import connection
 import sys
 
 
@@ -22,8 +22,8 @@ def home():
 
 @app.route('/api/recommendations', methods=['POST'])
 @cross_origin()
-def rec():
-    # gg ={}
+def get_recommendation():
+    data ={}
     data = request.json
     length = len(data)
     print(length, file=sys.stdout)
