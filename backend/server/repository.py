@@ -15,7 +15,6 @@ def get_game_list():
     for result in games:
         json_data.append(dict(zip(row_headers, result)))
     return json_data
-# connection.close()
 
 
 def get_all_games():
@@ -50,6 +49,4 @@ def getEachRecommendation(gam):
     
     for result in vals:
         js_data.append(dict(zip(row_headers, result)))
-        # no_of_values = []
-        # print(no_of_values.append(len(js_data)))
     return js_data

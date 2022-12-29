@@ -7,11 +7,6 @@ from server.repository import connection
 import sys
 
 
-
-# cors = CORS(app)
-# app.config["CORS_HEADERS"] = "Content-Type"
-
-
 @app.route('/home', methods=['GET'])
 @cross_origin()
 def home():
@@ -32,13 +27,3 @@ def get_recommendation():
         for gam in gg['Games']:
             js_data = getEachRecommendation(gam)
     return jsonify(js_data)
-
-
-# cursor.execute(
-            #     f'SELECT * FROM games WHERE title="{gam}" LIMIT 1')
-            # row_headers = [x[0] for x in cursor.description]
-            # vals = cursor.fetchall()
-            # for result in vals:
-            #     js_data.append(dict(zip(row_headers, result)))
-            #     # print(js_data)
-        # print(len(js_data))
