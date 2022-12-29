@@ -9,11 +9,11 @@ def get_game_list():
     cursor = connection.cursor()
     cursor.execute(
         'SELECT * FROM games WHERE scores > 80 ORDER BY RAND() LIMIT 12')
-    row_headers = [x[0] for x in cursor.description]
+    rows = [x[0] for x in cursor.description]
     games = cursor.fetchall()
     json_data = []
     for result in games:
-        json_data.append(dict(zip(row_headers, result)))
+        json_data.append(dict(zip(rows, result)))
     cursor.close()
     return json_data
 
@@ -48,11 +48,11 @@ def getEachRecommendation(gam):
     cursor = connection.cursor()
     cursor.execute(
         f'SELECT * FROM games WHERE title="{gam}" LIMIT 1')
-    row_headers = [x[0] for x in cursor.description]
-    vals = cursor.fetchall()
+    rows = [x[0] for x in cursor.description]
+    row_data = cursor.fetchall()
     
-    for result in vals:
-        js_data.append(dict(zip(row_headers, result)))
+    for result in row_data:
+        js_data.append(dict(zip(rows, result)))
     
     cursor.close()
     return js_data
