@@ -3,7 +3,6 @@ from flask import jsonify, request
 from flask_cors import cross_origin
 from server.repository import get_game_list, getEachRecommendation, ready_response
 from server.recommendations import give_recommendations
-import sys
 
 
 @app.route('/home', methods=['GET'])

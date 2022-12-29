@@ -28,16 +28,16 @@ def get_all_games():
 
 
 def get_pca_data():
-    pca_data = pd.read_pickle('/usr/app/src/server/engine/pca_data.pkl')
+    pca_data = pd.read_pickle('/usr/app/backend/server/engine/pca_data.pkl')
     return pca_data
 
 
 def get_embed_data():
-    embd = np.load('/usr/app/src/server/engine/embed_data_np.npy')
+    embd = np.load('/usr/app/backend/server/engine/embed_data_np.npy')
     return embd
 
 def ready_response():
-    print(js_data)
+    # print(js_data)
     js_data.clear()
 
 
