@@ -14,6 +14,7 @@ def get_game_list():
     json_data = []
     for result in games:
         json_data.append(dict(zip(row_headers, result)))
+    cursor.close()
     return json_data
 
 
@@ -36,11 +37,14 @@ def get_embed_data():
     return embd
 
 def ready_response():
-    if len(js_data) > 0:
-        js_data.clear()
+    print(js_data)
+    js_data.clear()
 
 
 def getEachRecommendation(gam):
+    # js_data.clear()
+    row_headers = []
+    vals = []
     cursor = connection.cursor()
     cursor.execute(
         f'SELECT * FROM games WHERE title="{gam}" LIMIT 1')
@@ -49,4 +53,6 @@ def getEachRecommendation(gam):
     
     for result in vals:
         js_data.append(dict(zip(row_headers, result)))
+    
+    cursor.close()
     return js_data

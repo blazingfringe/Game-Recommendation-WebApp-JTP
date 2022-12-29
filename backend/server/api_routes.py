@@ -17,6 +17,7 @@ def home():
 @app.route('/api/recommendations', methods=['POST'])
 @cross_origin()
 def get_recommendation():
+    ready_response()
     js_data = {}
     data = request.json
     length = len(data)
@@ -24,4 +25,5 @@ def get_recommendation():
         gg = give_recommendations(str(data[i]))
         for gam in gg['Games']:
             js_data = getEachRecommendation(gam)
+    # print(js_data)
     return jsonify(js_data)
