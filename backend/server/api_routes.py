@@ -17,10 +17,9 @@ def home():
 @app.route('/api/recommendations', methods=['POST'])
 @cross_origin()
 def get_recommendation():
-    data ={}
+    js_data = {}
     data = request.json
     length = len(data)
-    print(length, file=sys.stdout)
     for i in range(length):
         gg = give_recommendations(str(data[i]))
         for gam in gg['Games']:

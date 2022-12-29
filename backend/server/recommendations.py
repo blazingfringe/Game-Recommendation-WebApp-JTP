@@ -1,4 +1,3 @@
-from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 import numpy as np
@@ -15,9 +14,12 @@ indices = pd.Series(pca_data.index, index=df['title'])
 
 
 def give_recommendations(name):
+    result = {}
     index = indices[name]
-    index_recomm = cos_sim_values.loc[index].sort_values(
+    # Get 5 Recommendations for the queried Game
+    recommended_indices = cos_sim_values.loc[index].sort_values(
         ascending=False).index.tolist()[1:6]
-    games_rec = df['title'].loc[index_recomm].values
-    result = {'Games': games_rec, 'Index': index_recomm}
+    # Store the Recommendations in Dataframe
+    games_rec = df['title'].loc[recommended_indices].values
+    result = {'Games': games_rec, 'Index': recommended_indices}
     return result
