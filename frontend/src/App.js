@@ -25,7 +25,7 @@ const App = () => {
         alignItems="center"
         justifyContent="center"
     >
-      <Typography gutterBottom variant='h4'>Select Games From the Collection</Typography>
+      <Typography gutterBottom align='center' variant='h4'>Select Any 5 Games From the Given Collection</Typography>
       {
         games ?
         (<GameList games={games}/>)

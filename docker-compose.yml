@@ -1,6 +1,7 @@
 version: "3"
 services:
   frontend:
+    stdin_open: true
     build: ./frontend/
     container_name: frontend
     restart: always
@@ -10,7 +11,6 @@ services:
       - backend
     links:
       - backend
-    stdin_open: true
     tty: true
 
   backend:

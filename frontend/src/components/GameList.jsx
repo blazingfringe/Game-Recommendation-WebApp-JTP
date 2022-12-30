@@ -11,7 +11,7 @@ const StyledBox = styled(Box)({
     direction:'column',
     alignItems:"center",
     justifyContent:'center',
-    minHeight: '100vh',
+    // minHeight: '100vh',
 })
 
 
@@ -75,11 +75,11 @@ const GameList = ( {games} ) => {
             :(
             <StyledBox bgcolor='white' sx={{
                 m: 5, 
-                pt: 5,
+                // pt: 5,
                 display: "flex",
                 flexDirection: "row",
-                height: 800,
-                width:900,
+                // height: 800,
+                // width:900,
                 overflow: "scroll",
                 overflowY: "scroll",}}>
             {/* <form onSubmit={(e)=>submit(e)} method="POST" action='/rec'> */}
