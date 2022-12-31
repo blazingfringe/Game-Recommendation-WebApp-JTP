@@ -1,26 +1,27 @@
-from server import create_db_connection
+from server import db, app
+from flask import jsonify
 from sqlalchemy import text
+from server.models import Games
+from server.serializer import GamesSchema
+from sqlalchemy.sql.expression import func
 import pandas as pd
 import numpy as np
 
-try:
-    engine = create_db_connection()
-    print("Connection Created Successfully")
-except Exception as exp:
-    print("Connection Failed due to: \n", exp)
+
 js_data = []
 
 def get_game_list():
     json_data = []
-    with engine.connect() as connection:
-        query_result = connection.execute(text("SELECT * FROM games WHERE scores > 80 ORDER BY RAND() LIMIT 12"))
-        for rows in query_result:
-            json_data.append(dict(rows))
-    return json_data
+    game_table = Games.games
+    game_schema = GamesSchema(many=True)
+    initial_games_query = db.session.query(game_table).filter(game_table.scores > '80').order_by(func.rand()).limit(12).all()
+    initial_games = game_schema.dump(initial_games_query)
+    return initial_games
 
 
 def get_all_games():
-    query_df = pd.read_sql_query("""SELECT * FROM games;""", engine)
+    with app.app_context():
+        query_df = pd.read_sql_query("""SELECT * FROM games;""", db.engine)
     df = pd.DataFrame(query_df, columns=[
                       'title', 'images', 'summary', 'scores'])
     df.drop_duplicates('title', keep='first', inplace=True)
@@ -38,14 +39,12 @@ def get_embed_data():
     return embd
 
 def ready_response():
-    # print(js_data)
     js_data.clear()
 
 
 def getEachRecommendation(gam):
-    with engine.connect() as connection:
-        recommendations_query = connection.execute(text('SELECT * FROM games WHERE title=:x LIMIT 1'), x=gam)
-        for rows in recommendations_query:
-            js_data.append(dict(rows))
-    # print(js_data)
-    return js_data
+    game_table = Games.games
+    game_schema = GamesSchema(many=True)
+    each_game_detail_query = db.session.execute(db.select(game_table).filter_by(title=gam)).first()
+    each_game_details = game_schema.dump(each_game_detail_query)
+    return jsonify(each_game_details)

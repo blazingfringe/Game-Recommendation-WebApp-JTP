@@ -3,6 +3,9 @@ flask-cors
 pandas
 numpy
 scikit-learn
+Flask-SQLAlchemy
+flask-marshmallow==0.14.0
+marshmallow-sqlalchemy
 sqlalchemy
 pymysql
 cryptography

@@ -9,6 +9,8 @@ RUN pip install -r requirements.txt
 
 
 COPY /server/recommendations.py /usr/app/backend/server/recommendations.py
+COPY /server/models.py /usr/app/backend/server/models.py
+COPY /server/serializer.py /usr/app/backend/server/serializer.py
 COPY /server/repository.py /usr/app/backend/server/repository.py
 COPY /server/api_routes.py /usr/app/backend/server/api_routes.py
 COPY /server/__init__.py /usr/app/backend/server/__init__.py
