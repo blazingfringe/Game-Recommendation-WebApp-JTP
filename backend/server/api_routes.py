@@ -19,6 +19,7 @@ def get_recommendation():
     ready_response()
     js_data = {}
     data = request.json
+    # print(js_data)
     length = len(data)
     for i in range(length):
         gg = give_recommendations(str(data[i]))

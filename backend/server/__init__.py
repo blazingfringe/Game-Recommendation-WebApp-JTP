@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_cors import CORS, cross_origin
-import mysql.connector
+from sqlalchemy import create_engine
 
 
 app = Flask(__name__)
@@ -9,12 +9,9 @@ app.config["CORS_HEADERS"] = "Content-Type"
 
 
 def create_db_connection():
-    connection = mysql.connector.connect(host='mysql',
-                                         user='root',
-                                         password='root',
-                                         port='3306',
-                                         database='gamesdb')
-    print('DB Connected')
-    return connection
+    engine = create_engine("mysql+pymysql://root:root@mysql/gamesdb")
+    return engine
+
+
 
 from server import api_routes
