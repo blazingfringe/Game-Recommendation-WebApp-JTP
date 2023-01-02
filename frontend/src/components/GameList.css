@@ -1,0 +1,117 @@
+img{
+    max-width: 100%;
+    width: 170px;
+    height: 200px;
+    object-fit: fill;
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
+    /* margin-bottom: 1rem; */
+}
+
+.game{
+    position: relative;
+    width: 12.5em;
+    align-items: center;
+}
+
+.background{
+    background-color: #234;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    z-index: -1;
+    transform: scale(.4, .9);
+    transition: 250ms ease-in-out;
+    border-radius: 1rem;
+}
+
+.front{
+    /* opacity: 0; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    transition: 250ms;
+    overflow: visible;
+}
+
+.back{
+    opacity: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    flex-direction: column;
+    position: absolute;
+    padding-top:5px ;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-right: 5px;
+}
+
+
+.summary{
+    width: 100%;
+    flex: 50%;
+    color:aliceblue;
+    overflow: scroll;
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+}
+
+.score-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.meta-score{
+    color: aliceblue;
+    text-align: center;
+    background-color: #2376DD;
+    width: 2.5em;
+    height: 1.5em;
+    border-radius: 5em;
+}
+
+.game:hover .front{
+    transform: translateY(-60%) scale(0.8)
+    /* translateX(-10%); */
+}
+
+.game:hover .background{
+    opacity: 1;
+    transform: scale(1.4, 1.23);
+}
+
+.game:hover .game-title{
+    transition: 250ms;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.game:hover .back{
+    opacity: 1;
+    transform: translateY(15%);
+}
+
+.game-title{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.main-box{
+    background-color: transparent;
+}
+
+.game:hover .grid-container {
+    background-color: black;
+}
