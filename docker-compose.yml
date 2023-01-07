@@ -3,7 +3,7 @@ services:
   frontend:
     stdin_open: true
     build: ./frontend/
-    container_name: frontend
+    container_name: game_recommendation_frontend
     restart: always
     ports:
       - 3000:3000

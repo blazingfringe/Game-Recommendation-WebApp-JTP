@@ -7,7 +7,6 @@ COPY /server/engine/pca_data.pkl /usr/app/backend/server/engine/pca_data.pkl
 
 RUN pip install -r requirements.txt
 
-
 COPY /server/recommendations.py /usr/app/backend/server/recommendations.py
 COPY /server/models.py /usr/app/backend/server/models.py
 COPY /server/serializer.py /usr/app/backend/server/serializer.py

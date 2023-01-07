@@ -9,3 +9,5 @@ marshmallow-sqlalchemy
 sqlalchemy
 pymysql
 cryptography
+waitress
+sentence-transformers

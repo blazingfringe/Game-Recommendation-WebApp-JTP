@@ -1,17 +1,17 @@
 :root {
     --text-gradient: linear-gradient(
-      45deg,
-      #3B2667,
-      #BC78EC,
-      #F05F57,
-      #360940
+      68deg,
+      #dae2f8,
+      #d6a4a4,
+      #c9ffbf,
+      #ffafbd
     );
   } 
  
  .intro-text{
  background-image: var(--text-gradient);
  background-size: 400%;
- animation: gradient-animation 20s infinite alternate;
+ animation: gradient-animation 12s infinite alternate-reverse;
 }
 
 @keyframes gradient-animation {

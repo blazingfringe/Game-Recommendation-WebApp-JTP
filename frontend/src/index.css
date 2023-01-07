@@ -1,25 +1,19 @@
 :root {
   --background-gradients: linear-gradient(
     45deg,
-    #8EC5FC,
-    #E0C3FC,
-    #97D9E1,
-    #D9AFD9,
-    #ffd1ff,
-    #fad0c4
+    #e96443,
+    #904e95,
+    #FF8E9E
   );
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: var(--background-gradients);
   background-size: 400%;
-  animation: gradient-animation 20s infinite alternate;
+  animation: gradient-animation 15s infinite alternate-reverse;
 }
 
 @keyframes gradient-animation {

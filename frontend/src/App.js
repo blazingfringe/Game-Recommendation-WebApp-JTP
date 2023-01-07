@@ -22,10 +22,9 @@ const App = () => {
   const [games, setGames] = useState([]);
 
   useEffect(() =>{
-    fetch("http://localhost:8000/home")
+    fetch("http://localhost:8000/game-list")
     .then(response => response.json())
     .then((json) => {
-      // console.log(json)
       setGames(json);
     })
   },[])
@@ -38,9 +37,11 @@ const App = () => {
         minHeight={'100vh'}
         alignItems="center"
         justifyContent="center"
-        className='list-box'
-    >
-      <StyledTypography className='intro-text' gutterBottom align='center' variant='h4'>Select Any 5 Games From the Collection</StyledTypography>
+        className='list-box'>
+      <StyledTypography 
+        className='intro-text' 
+        gutterBottom align='center' 
+        variant='h4'>Select Any 5 Games From the Collection</StyledTypography>
       {
         games ?
         (<GameList games={games}/>)
