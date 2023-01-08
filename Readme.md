@@ -13,9 +13,13 @@ To get Recommendations:
 
 ## How to install this project using Docker
 
+<strong>Initial build will take a long time</strong>
+
 1. Clone this project
 2. Set up docker on the local system - https://docs.docker.com/get-docker/
 3. Make sure local ports: 3000, 3306 and 8000 are unused
 4. Using a terminal or command prompt: cd into the base directory
 5. Start using the command - `docker compose up --build`
-6. First build will take some time, upon completion project will be avialable for use on: http://localhost:3000/ on the local system
+   - <em>This will begin downloading of the dependencies</em>
+   - <em>Containers will start once database will initialize as it takes some time</em>
+6. Upon completion project will be avialable for use on: http://localhost:3000/ on the local system

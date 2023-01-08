@@ -4,6 +4,7 @@ WORKDIR /usr/app/backend
 COPY requirements.txt /usr/app/backend/requirements.txt
 COPY /server/engine/embed_data_np.npy /usr/app/backend/server/engine/embed_data_np.npy
 COPY /server/engine/pca_data.pkl /usr/app/backend/server/engine/pca_data.pkl
+COPY /server/engine/engine_generator.py /usr/app/backend/server/engine/engine_generator.py
 
 RUN pip install -r requirements.txt
 

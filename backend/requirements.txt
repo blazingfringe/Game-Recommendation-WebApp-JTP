@@ -11,3 +11,4 @@ pymysql
 cryptography
 waitress
 sentence-transformers
+mysql-connector-python==8.0.31
