@@ -26,3 +26,7 @@
 - This will start the process of building the model for regenerating the files
 
 <img width="600" src='https://i.imgur.com/FQ7kAtw.png' alt='Engine building model for regenerating files'>
+
+- Once the process completes, the terminal will show output as:
+
+<img width="600" src='https://i.imgur.com/xYfOXv1.png' alt='Engine rebuilding complete'>
