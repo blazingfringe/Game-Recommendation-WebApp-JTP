@@ -25,7 +25,7 @@
 
 <br/>
 
-<img width="800px" src="https://i.imgur.com/6b2t5XE.gif" alt="website-demo">
+[!web-app-demp](https://i.imgur.com/6b2t5XE.gif)
 
 <br/>
 
