@@ -12,7 +12,8 @@ const StyledBox = styled(Box)({
     direction:'column',
     alignItems:"center",
     justifyContent:'center',
-    overflow: 'visible'
+    overflow: 'visible',
+    overflowX: 'scroll'
 })
 
 const GameList = ( {games} ) => {
@@ -21,7 +22,7 @@ const GameList = ( {games} ) => {
     const [getRecs, setGetRecs] = useState(false)
     const [selected, setSelected] = useState(-1)
     
-    const toggleModal = () => {
+    const toggleGameRecs = () => {
         setGetRecs(!getRecs)
         setGameTitle([])
         setRecs(null)
@@ -54,7 +55,6 @@ const GameList = ( {games} ) => {
             }).then((resp) => {
                 return resp.json()
             }).then((res) => {
-                console.log(res)
                 setRecs(res)
                 setGetRecs(true)
             });
@@ -69,7 +69,7 @@ const GameList = ( {games} ) => {
             <>
             {
             getRecs === true ? 
-            (<GameRec recs = {recs}  toggleModal= {toggleModal}/>)
+            (<GameRec recs = {recs}  toggleGameRecs= {toggleGameRecs}/>)
             :(
             <StyledBox className='main-box' 
                 sx={{

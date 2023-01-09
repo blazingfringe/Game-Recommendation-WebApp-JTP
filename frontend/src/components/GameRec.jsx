@@ -4,6 +4,7 @@ import uuid from 'react-uuid'
 import {Modal, Box, styled, Typography} from '@mui/material'
 import Grid from '@mui/material/Grid';
 import './GameRec.css'
+import GameCard from './GameCard';
 
 const StyledModal = styled(Modal)({
     display:"flex",
@@ -12,28 +13,40 @@ const StyledModal = styled(Modal)({
 })
 
 const StyledBox = styled(Box)({
-  overflow: 'visible'
+  display: 'flex',
+  flexDirection: 'column',
+  overflowY: 'scroll',
+  overflowX: 'hidden',
+  height: '44rem',
+  width: '60rem',
+  borderRadius: '10px',
+  m: '5',
+  pt: '5',
 })
 
-const GameRec = ( {recs, toggleModal} ) => {
+const GameRec = ( {recs, toggleGameRecs} ) => {
     const [open, setOpen] = useState(true)
+    const [showGame, setShowGame] = useState(false)
+    const [gameDetails, setGameDetails] = useState('')
+
+    const handleClick = (e) =>{
+      setGameDetails(e.target.name)
+      setShowGame(true)
+    }
+
+    const toggleGameCard = () => {
+      setGameDetails('')
+      setShowGame(false)
+    }
+
   return (
     <>
       <StyledModal
         open={open}
         onClose={e=>{setOpen(false)
-            toggleModal()}}>
+          toggleGameRecs()}}>
         <StyledBox 
-          className='background-box' 
-          sx={{
-            m: 5, 
-            pt: 5,
-            display: "flex",
-            flexDirection: "column",
-            height: 800,
-            width:900,
-            overflow: "scroll",
-            overflowY: "scroll",}}>
+          className='background-box' >
             <Typography 
               gutterBottom m={5} 
               align='center' 
@@ -51,11 +64,21 @@ const GameRec = ( {recs, toggleModal} ) => {
               sx={{gridTemplateColumns: 'repeat(3, 1fr)'}} 
               key={uuid()} 
               item xs={3} sm={4} md={3}>
-                <img src={game.images} alt={game.title}/>
+                <img
+                  onClick={(e)=>{handleClick(e)}} 
+                  src={game.images}
+                  name = {game.title} 
+                  alt={game.title}/>
                 <h4>{game.title}</h4>
             </Grid>
           ))}
         </Grid>
+        {showGame === true 
+          ? 
+          (<GameCard 
+            recs={recs}
+            toggleGameCard = {toggleGameCard}
+            gameDetails={gameDetails}/>)  : (<></>)}
       </StyledBox>
     </StyledModal>
   </>

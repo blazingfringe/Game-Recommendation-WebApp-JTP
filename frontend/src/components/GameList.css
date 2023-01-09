@@ -63,6 +63,7 @@ img:hover{
     flex: 50%;
     color:aliceblue;
     overflow: scroll;
+    overflow-x: hidden;
     text-align: justify;
     display: -webkit-box;
     -webkit-line-clamp: 8;

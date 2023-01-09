@@ -7,19 +7,21 @@
 <em>This takes a long time to work, please wait for the process to finish, progress can be tracked in the progress bar shown in the terminal</em>
 
 - Into a terminal or command prompt:
-  -To get the container ID for the backend container: `docker container ls`
+
+  - To get the container ID for the backend container:
+    `docker container ls`
 
   - To start bash session:
     `docker container exec -it {container id} /bin/bash`
 
-  - For example:
-    `docker exec -it 50e20d2eae20 /bin/bash`
+  <em>For example:
+  `docker exec -it 50e20d2eae20 /bin/bash`</em>
 
 - Get into the engine directory:
   `cd server/engine`
 
-- Run the recommendation_generator.py file
-  `python3 recommendation_generator.py`
+- Run the engine_generator.py file
+  `python3 engine_generator.py`
 
 - This will start the process of building the model for regenerating the files
 
