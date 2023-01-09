@@ -25,7 +25,7 @@
 
 <br/>
 
-[!web-app-demp](https://i.imgur.com/6b2t5XE.gif)
+![](https://i.imgur.com/6b2t5XE.gif)
 
 <br/>
 
