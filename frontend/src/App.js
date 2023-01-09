@@ -41,7 +41,8 @@ const App = () => {
       <StyledTypography 
         className='intro-text' 
         gutterBottom align='center' 
-        variant='h4'>Select Any 5 Games From the Collection</StyledTypography>
+        variant='h4'>Select Any 5 Games From the Collection
+      </StyledTypography>
       {
         games ?
         (<GameList games={games}/>)

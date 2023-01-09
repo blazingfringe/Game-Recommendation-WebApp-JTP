@@ -1,7 +1,7 @@
 from server import app
 from flask import jsonify, request
 from flask_cors import cross_origin
-from server.repository import get_game_list
+from server.repository import get_game_list, get_search_values
 from server.recommendations import get_games
 
 
