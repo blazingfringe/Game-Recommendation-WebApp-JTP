@@ -121,7 +121,7 @@ const GameList = ( {games} ) => {
                                 {game.summary}
                         </Typography>
                     </div>
-                    <div className="background">
+                    <div className="hover-background">
                     </div>
             </Grid>
         ))

@@ -18,7 +18,7 @@ img:hover{
     align-items: center;
 }
 
-.background{
+.hover-background{
     background-color: #234;
     position: absolute;
     top: 0;
@@ -90,7 +90,7 @@ img:hover{
     transform: translateY(-60%) scale(0.8)
 }
 
-.game:hover .background{
+.game:hover .hover-background{
     opacity: 1;
     transform: scale(1.4, 1.23);
 }
