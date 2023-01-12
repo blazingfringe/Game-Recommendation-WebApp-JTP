@@ -14,9 +14,9 @@ indices = pd.Series(pca_data.index, index=df['title'])
 def give_recommendations(name):
     result = {}
     index = indices[name]
-    # Get 4 Recommendations for the queried Game
+    # Get 3 Recommendations for the queried Game
     recommended_indices = cos_sim_values.loc[index].sort_values(
-        ascending=False).index.tolist()[1:5]
+        ascending=False).index.tolist()[1:4]
     # Store the Recommendations in Dataframe
     games_rec = df['title'].loc[recommended_indices].values
     result = {'Games': games_rec, 'Index': recommended_indices}

@@ -1,0 +1,35 @@
+$mainBackground: linear-gradient(#000, #fff);
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar{
+  width: 0.5em;
+  height: 0.1em;
+}
+
+::-webkit-scrollbar-track{
+  background: #EAC7C7;
+  margin-block: 0.5em;
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #A0C3D2;
+  border-radius: 100vw;
+  border: 0.6rem solid #A0C3D2;
+  background-clip: content-box;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: $mainBackground;
+  background-size: 400% ;
+}
+
+:root{
+  z-index: -1;
+}
+
