@@ -8,6 +8,11 @@ import SelectionHover from '../SelectionHover/SelectionHover'
 import GameBack from '../GameRender/GameBack'
 import { motion } from 'framer-motion'
 
+/**
+ * 
+ * @returns Game List Component
+ */
+
 const GameList = () => {
     const games = GetGames()
 

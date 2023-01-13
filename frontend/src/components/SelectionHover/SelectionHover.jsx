@@ -1,6 +1,12 @@
 import React from 'react'
 import '../../styles/styles.scss'
 
+/**
+ * 
+ * @param {number} count Number of selected games
+ * @returns Number of Selected Games as Hover
+ */
+
 const SelectionHover = ({ count }) => {
     return (
         <div className='slected-hover-div'>

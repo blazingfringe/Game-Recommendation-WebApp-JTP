@@ -1,5 +1,11 @@
 import React from 'react'
 
+/**
+ * 
+ * @param  game details of games 
+ * @returns Game Icon Component
+ */
+
 const GameIcon = ({ game, handle, selectedGames }) => {
     return (
         <>

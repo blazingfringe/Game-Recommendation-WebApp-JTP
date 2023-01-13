@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react"
 
+/**
+ * Component for fetching game data from backend
+ * @returns game data from backend
+ */
+
 export function GetGames() {
     const [games, setGames] = useState([]);
     useEffect(() => {
@@ -11,27 +16,3 @@ export function GetGames() {
     }, [])
     return games
 };
-
-
-export function GetRecommendations(selectedGames,) {
-    const [recs, setRecs] = useState(null)
-    useEffect(() => {
-        const getRecommendations = async () => {
-            setRecs(null)
-            await fetch('http://localhost:8000/api/recommendations', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(selectedGames)
-            }).then((resp) => {
-                return resp.json()
-            }).then((res) => {
-                setRecs(res)
-            });
-        }
-        if (selectedGames.length > 4) {
-
-            getRecommendations()
-        }
-    }, [selectedGames])
-    return recs
-}

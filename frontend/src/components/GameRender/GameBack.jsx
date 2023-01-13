@@ -1,5 +1,11 @@
 import React from 'react'
 
+/**
+ * 
+ * @param {json} game details of games 
+ * @returns Back section of game icon
+ */
+
 const GameBack = ({ game }) => {
     return (
         <div className="back">

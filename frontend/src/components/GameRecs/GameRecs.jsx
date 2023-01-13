@@ -3,6 +3,12 @@ import { StyledModal } from '../../utils/muiStyles'
 import uuid from 'react-uuid'
 import GameCard from '../GameRender/GameCard'
 
+/**
+ * 
+ * @param  recs details of games recommended games
+ * @returns Game Recommendations Modal Component
+ */
+
 
 const GameRecs = ({ recs, toggleRecs }) => {
     const [open, setOpen] = useState(true)

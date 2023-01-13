@@ -3,6 +3,11 @@ import './styles/styles.scss'
 import GameList from './components/GameList/GameList';
 import Hero from './components/Hero/Hero';
 
+/**
+ * Main Layout of webapp
+ * @returns Main App component
+ */
+
 const App = () => {
   return (
     <div className='main-container'>

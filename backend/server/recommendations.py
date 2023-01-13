@@ -3,15 +3,28 @@ import pandas as pd
 import json
 from server.repository import get_all_games, get_embed_data, get_pca_data, getEachRecommendation
 
+""" Get all the rows from the database to store in dataframe """
 df = get_all_games()
+
+""" Get Recommendation Engine files """
 pca_data = get_pca_data()
 word_vectors = get_embed_data()
 
+""" Generate Cosine Similarity values for each word vector """
 cos_sim_values = pd.DataFrame(cosine_similarity(word_vectors))
 indices = pd.Series(pca_data.index, index=df['title'])
 
 
 def give_recommendations(name):
+    """
+    _summary_: Generate 3 Similar Recommendations for Game provided as input.
+
+    Param name:
+        _type_: _description_: This is the game for which recommendations are being generated
+
+    Returns: 
+        _type_: _description_: The result with all the data for the 3 Recommended Games
+    """
     result = {}
     index = indices[name]
     # Get 3 Recommendations for the queried Game
@@ -24,6 +37,14 @@ def give_recommendations(name):
 
 
 def get_games(data):
+    """
+    _summary_: Get Recommendations for each of the game provided from the payload.
+
+    Param data:
+        _type_: _description_: Takes in an json of names of the games to generate recommendations for.
+    Returns:
+        _type_: _description_: Game Data for all the Recommendations.
+    """
     recommendations = []
     length = len(data)
     for i in range(length):
