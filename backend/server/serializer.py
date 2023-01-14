@@ -1,10 +1,10 @@
-from server import ma
 from server.models import Games
+from server import ma
 
 
 class GamesSchema(ma.SQLAlchemyAutoSchema):
     """
-    _summary_: Class to Serialize database queries
+    Class to Serialize database queries
     """
     class Meta:
         model = Games.games

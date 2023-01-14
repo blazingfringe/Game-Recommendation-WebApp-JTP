@@ -2,19 +2,20 @@ import React, { useState } from 'react'
 import { StyledModal } from '../../utils/muiStyles'
 import uuid from 'react-uuid'
 import GameCard from '../GameRender/GameCard'
+import GameIcon from '../GameRender/GameIcon'
 
 /**
  * 
- * @param  recs details of games recommended games
+ * @param  recommendations details of games recommended games
  * @returns Game Recommendations Modal Component
  */
 
 
-const GameRecs = ({ recs, toggleRecs }) => {
-    const [open, setOpen] = useState(true)
+const GameRecs = ({ open, setOpen, recommendations, toggleRecs }) => {
     const [showGame, setShowGame] = useState(false)
     const [chosenGame, setChosenGame] = useState('')
-    const handler = (e) => {
+
+    const handler = (e, index) => {
         setChosenGame(e.target.name)
         setShowGame(true)
     }
@@ -23,6 +24,11 @@ const GameRecs = ({ recs, toggleRecs }) => {
         setChosenGame('')
         setShowGame(false)
     }
+
+    if (!recommendations) {
+        return null
+    }
+
     return (
         <StyledModal
             className='modal'
@@ -34,27 +40,17 @@ const GameRecs = ({ recs, toggleRecs }) => {
             <div className="recs-container">
                 <h4>Recommendations for you: </h4>
                 <div className="grid-container recs">
-                    {recs.map((game) => (
+                    {recommendations.map((game, index) => (
                         <div className="grid-item-rec" key={uuid()}>
-                            <div key={uuid()} className="front">
-                                <img
-                                    className='game-image'
-                                    onClick={(e) => handler(e)}
-                                    name={game.title}
-                                    src={game.images}
-                                    alt={game.title} />
-                                <p className='game-title'>{game.title}</p>
-                            </div>
+                            <GameIcon game={game} handle={handler} index={index} classes={"game-image"} />
                         </div>
                     ))}
                 </div>
-                {
-                    showGame ? (
-                        <GameCard
-                            recs={recs}
-                            toggleGameCard={toggleGameCard}
-                            chosenGame={chosenGame} />) : (<></>)
-                }
+                {showGame ? (
+                    <GameCard
+                        recommendations={recommendations}
+                        toggleGameCard={toggleGameCard}
+                        chosenGame={chosenGame} />) : (<></>)}
             </div>
         </StyledModal>
     )

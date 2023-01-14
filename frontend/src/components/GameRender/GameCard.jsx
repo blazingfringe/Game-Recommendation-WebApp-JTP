@@ -11,9 +11,9 @@ import '../../styles/styles.scss'
  * @returns Game Card Component
  */
 
-const GameCard = ({ recs, toggleGameCard, chosenGame }) => {
+const GameCard = ({ recommendations, toggleGameCard, chosenGame }) => {
     const [openCard, setOpenCard] = useState(true)
-    const gameDet = recs.filter((game) => (game.title === chosenGame))
+    const gameDetails = recommendations.filter((game) => (game.title === chosenGame))
     return (
         <StyledModal
             open={openCard}
@@ -22,7 +22,7 @@ const GameCard = ({ recs, toggleGameCard, chosenGame }) => {
                 toggleGameCard()
             }}>
             <div className="card-container">
-                {gameDet.map((game) => (
+                {gameDetails.map((game) => (
                     <div className="card-holder" key={uuid()}>
                         <h2 className='card-title'>{game.title}</h2>
                         <img className='card-img' src={game.images} alt={game.title} />

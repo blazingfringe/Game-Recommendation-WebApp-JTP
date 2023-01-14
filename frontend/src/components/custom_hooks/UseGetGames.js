@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
  * @returns game data from backend
  */
 
-export function GetGames() {
+export function UseGetGames() {
     const [games, setGames] = useState([]);
     useEffect(() => {
         fetch("http://localhost:8000/game-list")

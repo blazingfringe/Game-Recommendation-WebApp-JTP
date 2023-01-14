@@ -4,6 +4,10 @@ import mysql.connector
 from sentence_transformers import SentenceTransformer
 from sklearn.decomposition import PCA
 
+"""
+    Generate files for recommendations by building the model
+"""
+
 # Connect to the database
 mydb = mysql.connector.connect(
     host='mysql', user='root', password='root', database='gamesdb', use_pure=True)

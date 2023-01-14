@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import '../../styles/styles.scss'
 import uuid from 'react-uuid'
-import { GetGames } from '../service/GameData'
+import { UseGetGames } from '../custom_hooks/UseGetGames'
 import GameRecs from '../GameRecs/GameRecs'
 import GameIcon from '../GameRender/GameIcon'
 import SelectionHover from '../SelectionHover/SelectionHover'
 import GameBack from '../GameRender/GameBack'
-import { motion } from 'framer-motion'
 
 /**
  * 
@@ -14,13 +13,14 @@ import { motion } from 'framer-motion'
  */
 
 const GameList = () => {
-    const games = GetGames()
-
+    const games = UseGetGames()
     const [selectedGames, setSelectedGames] = useState([])
-    const [recs, setRecs] = useState(null)
+    const [recommendations, setRecommendations] = useState(null)
     const [count, setCount] = useState(0)
     const selectionRef = useRef()
     const [showSelected, setShowSelected] = useState()
+    const [trackSelected, setTrackSelected] = useState([])
+    const [open, setOpen] = useState(false)
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
@@ -30,28 +30,33 @@ const GameList = () => {
         observer.observe(selectionRef.current)
     }, [])
 
-    const handle = (e) => {
+    const handle = (e, index) => {
         if (selectedGames.includes(e.target.name)) {
             alert("Alredy Selected")
         } else {
             setSelectedGames([e.target.name, ...selectedGames])
             setCount(prevCount => prevCount + 1)
-            setCss(e)
+            setTrackSelected([...trackSelected, index])
         }
     }
-    function setCss(e) {
-        e.target.className = "game-image-selected"
-    }
-
     const toggleRecs = () => {
         setSelectedGames([])
-        setRecs(null)
+        setRecommendations(null)
         setCount(0)
+        setTrackSelected([])
+    }
+
+    function toggleActiveStyle(index) {
+        if (trackSelected.includes(index)) {
+            return "game-image-selected"
+        } else {
+            return "game-image"
+        }
     }
 
     useEffect(() => {
         const getRecommendations = async () => {
-            setRecs(null)
+            setRecommendations(null)
             await fetch('http://localhost:8000/api/recommendations', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -59,36 +64,29 @@ const GameList = () => {
             }).then((resp) => {
                 return resp.json()
             }).then((res) => {
-                setRecs(res)
+                setRecommendations(res)
             });
         }
         if (selectedGames.length > 4) {
             getRecommendations()
+            setOpen(true)
         }
     }, [selectedGames])
 
     return (
         <div ref={selectionRef} className="gamelist-container">
             <h1 className='gamelist-top-text'>Select any 5 Games</h1>
-            <motion.div
-                className="grid-container"
-                initial={{ opacity: 0, translateX: -50, translateY: -50 }}
-                animate={{ opacity: 1, translateX: 0, translateY: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}>
-                {games.map((game) => (
-                    <motion.div key={uuid()} className="grid-item">
-                        <div key={uuid()} className="front">
-                            <GameIcon game={game} handle={handle} selectedGames={selectedGames} />
-                        </div>
-                        <GameBack key={uuid()} game={game} />
-                        <div className="hover-background"></div>
-                    </motion.div>
+            <div className="grid-container">
+                {games.map((game, index) => (
+                    <div key={uuid()} className="grid-item">
+                        <GameIcon game={game} index={index} handle={handle} classes={toggleActiveStyle(index)} />
+                        <GameBack game={game} />
+                        <div className="hover-background" />
+                    </div>
                 ))}
-                <>
-                    {recs !== null ? (<GameRecs recs={recs} toggleRecs={toggleRecs} />) : (<></>)}
-                </>
-            </motion.div>
-            {showSelected ? (<SelectionHover count={count} />) : (<></>)}
+                <GameRecs open={open} setOpen={setOpen} recommendations={recommendations} toggleRecs={toggleRecs} />
+            </div>
+            <SelectionHover showSelected={showSelected} count={count} />
         </div>
     )
 }

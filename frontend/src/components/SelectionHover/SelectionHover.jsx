@@ -7,7 +7,10 @@ import '../../styles/styles.scss'
  * @returns Number of Selected Games as Hover
  */
 
-const SelectionHover = ({ count }) => {
+const SelectionHover = ({ showSelected, count }) => {
+    if (!showSelected) {
+        return null
+    }
     return (
         <div className='slected-hover-div'>
             <h4 className='selected-info'>Selected Games: {count}</h4>
