@@ -11,7 +11,7 @@ def get_game_list():
     """Get data for any random 12 games from the database that have scores above 80.
 
         Returns:
-            intial_games: Data for 12 random Games.
+            initial_games: Data for 12 random Games.
     """
     game_table = Games.games
     game_schema = GamesSchema(many=True)

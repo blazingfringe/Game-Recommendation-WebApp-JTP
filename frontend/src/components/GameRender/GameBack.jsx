@@ -1,8 +1,8 @@
 import React from 'react'
 
 /**
- * 
- * @param {json} game details of games 
+ * Component to Render details of a game on hovering
+ * @param game details of games 
  * @returns Back section of game icon
  */
 

@@ -1,8 +1,8 @@
 import React from 'react'
 
 /**
- * 
- * @param  game details of games 
+ * Component to Render Game Icon
+ * @param game details of a game 
  * @param index index of the game in the grid
  * @param handle onClick handler
  * @param classes set className for image component

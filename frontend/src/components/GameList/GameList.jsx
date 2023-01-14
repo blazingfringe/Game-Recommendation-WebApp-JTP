@@ -8,7 +8,7 @@ import SelectionHover from '../SelectionHover/SelectionHover'
 import GameBack from '../GameRender/GameBack'
 
 /**
- * 
+ * Component for Showing Initial Game List
  * @returns Game List Component
  */
 
@@ -32,7 +32,7 @@ const GameList = () => {
 
     const handle = (e, index) => {
         if (selectedGames.includes(e.target.name)) {
-            alert("Alredy Selected")
+            alert("Already Selected")
         } else {
             setSelectedGames([e.target.name, ...selectedGames])
             setCount(prevCount => prevCount + 1)

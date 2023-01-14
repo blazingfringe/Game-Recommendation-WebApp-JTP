@@ -5,8 +5,11 @@ import GameCard from '../GameRender/GameCard'
 import GameIcon from '../GameRender/GameIcon'
 
 /**
- * 
+ * Component for Showing Recommended Games
+ * @param open lifted state to toggle modal
+ * @param setOpen set value of lifted state
  * @param  recommendations details of games recommended games
+ * @param  toggleRecs helper function to reset states when modal closes
  * @returns Game Recommendations Modal Component
  */
 

@@ -1,5 +1,7 @@
-React App Service
+# React App Service
 
-- Runs on localhost:3000
+## Runs on: `http://localhost:3000/`
 
-- to start run docker-compose.yml  
+## To start the front end application: 
+    1. Get into the frontend directory
+    2. Run in the Terminal `npm start`

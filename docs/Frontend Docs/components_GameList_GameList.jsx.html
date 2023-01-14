@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/GameList/GameList.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/GameList/GameList.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect, useRef } from 'react'
+import '../../styles/styles.scss'
+import uuid from 'react-uuid'
+import { UseGetGames } from '../custom_hooks/UseGetGames'
+import GameRecs from '../GameRecs/GameRecs'
+import GameIcon from '../GameRender/GameIcon'
+import SelectionHover from '../SelectionHover/SelectionHover'
+import GameBack from '../GameRender/GameBack'
+
+/**
+ * Component for Showing Initial Game List
+ * @returns Game List Component
+ */
+
+const GameList = () => {
+    const games = UseGetGames()
+    const [selectedGames, setSelectedGames] = useState([])
+    const [recommendations, setRecommendations] = useState(null)
+    const [count, setCount] = useState(0)
+    const selectionRef = useRef()
+    const [showSelected, setShowSelected] = useState()
+    const [trackSelected, setTrackSelected] = useState([])
+    const [open, setOpen] = useState(false)
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            const entry = entries[0]
+            setShowSelected(entry.isIntersecting)
+        })
+        observer.observe(selectionRef.current)
+    }, [])
+
+    const handle = (e, index) => {
+        if (selectedGames.includes(e.target.name)) {
+            alert("Alredy Selected")
+        } else {
+            setSelectedGames([e.target.name, ...selectedGames])
+            setCount(prevCount => prevCount + 1)
+            setTrackSelected([...trackSelected, index])
+        }
+    }
+    const toggleRecs = () => {
+        setSelectedGames([])
+        setRecommendations(null)
+        setCount(0)
+        setTrackSelected([])
+    }
+
+    function toggleActiveStyle(index) {
+        if (trackSelected.includes(index)) {
+            return "game-image-selected"
+        } else {
+            return "game-image"
+        }
+    }
+
+    useEffect(() => {
+        const getRecommendations = async () => {
+            setRecommendations(null)
+            await fetch('http://localhost:8000/api/recommendations', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(selectedGames)
+            }).then((resp) => {
+                return resp.json()
+            }).then((res) => {
+                setRecommendations(res)
+            });
+        }
+        if (selectedGames.length > 4) {
+            getRecommendations()
+            setOpen(true)
+        }
+    }, [selectedGames])
+
+    return (
+        &lt;div ref={selectionRef} className="gamelist-container">
+            &lt;h1 className='gamelist-top-text'>Select any 5 Games&lt;/h1>
+            &lt;div className="grid-container">
+                {games.map((game, index) => (
+                    &lt;div key={uuid()} className="grid-item">
+                        &lt;GameIcon game={game} index={index} handle={handle} classes={toggleActiveStyle(index)} />
+                        &lt;GameBack game={game} />
+                        &lt;div className="hover-background" />
+                    &lt;/div>
+                ))}
+                &lt;GameRecs open={open} setOpen={setOpen} recommendations={recommendations} toggleRecs={toggleRecs} />
+            &lt;/div>
+            &lt;SelectionHover showSelected={showSelected} count={count} />
+        &lt;/div>
+    )
+}
+
+export default GameList</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Game Recommender</a></h2><h3>Modules</h3><ul><li><a href="module-StyledModal.html">StyledModal</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#BottomText">BottomText</a></li><li><a href="global.html#DownArrow">DownArrow</a></li><li><a href="global.html#GameBack">GameBack</a></li><li><a href="global.html#GameCard">GameCard</a></li><li><a href="global.html#GameController">GameController</a></li><li><a href="global.html#GameIcon">GameIcon</a></li><li><a href="global.html#GameList">GameList</a></li><li><a href="global.html#GameRecs">GameRecs</a></li><li><a href="global.html#Hero">Hero</a></li><li><a href="global.html#SelectionHover">SelectionHover</a></li><li><a href="global.html#TopText">TopText</a></li><li><a href="global.html#UseGetGames">UseGetGames</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sat Jan 14 2023 14:32:44 GMT+0530 (India Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

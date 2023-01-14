@@ -2,6 +2,11 @@ import React from 'react'
 import { Link } from 'react-scroll'
 import { motion } from 'framer-motion'
 
+/**
+ * Component to render DownArrow of Hero Section
+ * @returns DownArrow of Hero Section
+ */
+
 const DownArrow = () => {
     return (
         <motion.div className='down-arrow'>

@@ -4,8 +4,8 @@ import uuid from 'react-uuid'
 import '../../styles/styles.scss'
 
 /**
- * 
- * @param recs: details of games 
+ * Component to render Game Card
+ * @param recommendations: details of games 
  * @param toggleGameCard: function to toggle game cards
  * @param chosenGame: Game being clicked on 
  * @returns Game Card Component

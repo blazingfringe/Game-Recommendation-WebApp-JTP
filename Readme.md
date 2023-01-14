@@ -1,6 +1,6 @@
-# Game Recommnedation System
+# Game Recommendation System
 
-<img  src='https://i.imgur.com/yZbKsma.png' alt='Game-Recommendation-System'>
+<img  src='https://i.imgur.com/WLdemz3.png' alt='Game-Recommendation-System'>
 
 <br/>
 
@@ -16,7 +16,7 @@
 ## Goals:
 
 - This Recommendation WebApp aims to provide a recommendation of games from a catalog, for the user based on their selections.
-- This will allow the user to not only get access to a list games matching their preferences. So as to emulate a user's experince upon availing such an online gaming service.
+- This will allow the user to not only get access to a list games matching their preferences. So as to emulate a user's experience upon availing such an online gaming service.
 
 ### To get Recommendations:
 
@@ -36,20 +36,20 @@
 1. Clone this project
 2. Set up docker on the local system - https://docs.docker.com/get-docker/
 3. Make sure local ports: 3000, 3306 and 8000 are unused
-4. Using a terminal or command prompt: cd into the base directory
+4. Using a terminal or command prompt: Get into the base directory of the cloned folder
 5. Start using the command: `docker-compose up --build`
    - <em>This will begin downloading of the dependencies</em>
    - <em>Containers will start once database will initialize as it takes some time</em>
-6. Upon completion project will be avialable for use on: http://localhost:3000/ on the local system
+6. Upon completion project will be available for use on: http://localhost:3000/ on the local system
 
 ## FAQ
 
-1. Is my build stuck at init.db process?
-
-- It takes some time to initialize the database, it takes upto 5 minutes to initialize the database.
-- The process will look like this on the terminal:
-  <br/>
-  <img width="600px" src="https://i.imgur.com/hhxTylz.jpg" alt="database-init">
-- Once the build completes, this will be the status at the terminal and the web-app can be accessed from http://localhost:3000:
-  <br/>
-  <img width="600px" src="https://i.imgur.com/BKUf6SC.png" alt="build-complete">
+1. Is my build stuck at EntryPoint process?
+  - It may appear as stuck but the process is running to initialize the database
+  - It takes some time to initialize the database, it takes up-to 5 minutes to initialize the database.
+  - The process will look like this on the terminal:
+    <br/>
+    <img width="600px" src="https://i.imgur.com/hhxTylz.jpg" alt="database-init">
+  - Once the build completes, this will be the status at the terminal and the   web-app can be accessed from http://localhost:3000:
+    <br/>
+    <img width="600px" src="https://i.imgur.com/BKUf6SC.png" alt="build-complete">

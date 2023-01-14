@@ -1,4 +1,4 @@
-# How to re-generate the recommendaton engine files
+# How to re-generate the recommendation engine files
 
 ## Start a bash session once the docker backend containers are ready
 
