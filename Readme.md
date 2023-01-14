@@ -16,7 +16,7 @@
 ## Goals:
 
 - This Recommendation WebApp aims to provide a recommendation of games from a catalog, for the user based on their selections.
-- This will allow the user to not only get access to a list games matching their preferences. So as to emulate a user's experience upon availing such an online gaming service.
+- This will allow the user to get access to a list games matching their preferences.
 
 ### To get Recommendations:
 
@@ -25,7 +25,7 @@
 
 <br/>
 
-![](https://i.imgur.com/6b2t5XE.gif)
+![](./GameRecommender_Preview.gif)
 
 <br/>
 
