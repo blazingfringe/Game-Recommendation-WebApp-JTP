@@ -40,7 +40,7 @@
 5. Start using the command: `docker-compose up --build`
    - <em>This will begin downloading of the dependencies</em>
    - <em>Containers will start once database will initialize as it takes some time</em>
-6. Upon completion project will be available for use on: http://localhost:3000/ on the local system
+6. Upon completion of the build, the project will be available for use on: http://localhost:3000/ on the local system
 
 ## FAQ
 
