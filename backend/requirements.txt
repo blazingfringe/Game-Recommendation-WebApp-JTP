@@ -3,11 +3,11 @@ flask-cors
 pandas
 numpy
 scikit-learn
-Flask-SQLAlchemy
+Flask-SQLAlchemy==3.0.2
 flask-marshmallow==0.14.0
-marshmallow-sqlalchemy
-sqlalchemy
-pymysql
+marshmallow-sqlalchemy==0.28.1
+sqlalchemy==1.4.46
+pymysql==1.0.1
 cryptography
 waitress
 sentence-transformers
