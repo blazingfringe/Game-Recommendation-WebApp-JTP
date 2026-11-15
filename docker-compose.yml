@@ -33,9 +33,11 @@ services:
     environment:
       MYSQL_DATABASE: 'games_db'
       MYSQL_ROOT_PASSWORD: 'root'
-    ports:
-      - 3306:3306
+    # MySQL is accessed by the backend on the Compose network only.
+    # No host port is needed for the application.
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://mysql:3306"]
+      # TCP avoids reporting success against the temporary init server.
+      test: ["CMD-SHELL", "mysql --protocol=TCP --host=127.0.0.1 --user=root --password=root --execute=\"SELECT 1\" >/dev/null 2>&1"]
+      interval: 10s
       timeout: 10s
       retries: 60
